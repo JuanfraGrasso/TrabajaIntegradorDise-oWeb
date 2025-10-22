@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Contacto</title>
+    <meta name="description" content="Contactate con el Centro Urbano para consultas, sugerencias o soporte." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="contacto">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container grid grid-aside">
+            <section class="stack">
+                <h1>Contacto</h1>
+                <p class="text-muted">Completá el formulario y te responderemos a la brevedad.</p>
+
+                <form id="contacto-form" novalidate>
+                    <div class="field">
+                        <label for="nombre">Nombre y apellido</label>
+                        <input type="text" id="nombre" name="nombre" required />
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono (opcional)</label>
+                        <input type="tel" id="telefono" name="telefono" />
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <div class="field">
+                        <label for="motivo">Motivo</label>
+                        <select id="motivo" name="motivo" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Consulta general">Consulta general</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Prensa y eventos">Prensa y eventos</option>
+                        </select>
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <div class="field">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <div class="field">
+                        <label>
+                            <input type="checkbox" name="acepto" /> Acepto los términos y condiciones
+                        </label>
+                        <div class="error-msg" aria-live="polite"></div>
+                    </div>
+                    <button class="btn primary" type="submit">Enviar</button>
+                </form>
+            </section>
+
+            <aside class="panel stack">
+                <h2>Información</h2>
+                <p>Av. Principal 123, Ciudad</p>
+                <p>Horarios: Lunes a Domingo de 10 a 22 hs</p>
+                <div class="card">
+                    <div class="body">
+                        <h3>¿Cómo llegar?</h3>
+                        <p class="text-muted">Colectivos: 15, 43, 72 • Subte: Línea C (Est. Centro)</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="body">
+                        <h3>Mapa</h3>
+                        <p class="text-muted">(Integrá un mapa embebido si lo necesitás.)</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

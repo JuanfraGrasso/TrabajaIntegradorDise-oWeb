@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Gastronomía</title>
+    <meta name="description"
+        content="Propuestas gastronómicas: cafeterías, restaurantes y bares en el Centro Urbano." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="gastronomia">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container stack">
+            <h1>Gastronomía</h1>
+            <p class="text-muted">Hacé click en una imagen para verla ampliada.</p>
+
+            <div class="gallery">
+                <figure class="item">
+                    <img src="images/gastro_cafe.jpg" alt="Café latte con arte" />
+                    <figcaption class="visually-hidden">Cafetería de especialidad</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gastro_burger.jpg" alt="Hamburguesa gourmet" />
+                    <figcaption class="visually-hidden">Hamburguesería</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gastro_pasta.jpg" alt="Plato de pasta fresca" />
+                    <figcaption class="visually-hidden">Pasta fresca</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gastro_sushi.jpg" alt="Sushi variado" />
+                    <figcaption class="visually-hidden">Sushi bar</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gastro_salad.jpg" alt="Ensalada saludable" />
+                    <figcaption class="visually-hidden">Comida saludable</figcaption>
+                </figure>
+                <figure class="item">
+                    <img src="images/gastro_dessert.jpg" alt="Postre artesanal" />
+                    <figcaption class="visually-hidden">Pastelería</figcaption>
+                </figure>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

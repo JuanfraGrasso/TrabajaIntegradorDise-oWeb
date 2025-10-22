@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Entretenimientos</title>
+    <meta name="description" content="Cine, juegos y experiencias en el Centro Urbano." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="entretenimientos">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container stack">
+            <h1>Entretenimientos</h1>
+            <div class="carousel" aria-roledescription="carrusel">
+                <div class="carousel-track">
+                    <div class="carousel-slide">Cine Urbano</div>
+                    <div class="carousel-slide">Arcade & VR</div>
+                    <div class="carousel-slide">Pista Roller</div>
+                </div>
+                <button class="control prev" aria-label="Anterior">◀</button>
+                <button class="control next" aria-label="Siguiente">▶</button>
+            </div>
+
+            <section class="grid grid-3">
+                <article class="card">
+                    <div class="media"><img src="images/ent_cine.jpg" alt="Sala de cine"></div>
+                    <div class="body">
+                        <h3>Cine Urbano</h3>
+                        <p class="meta">Salas 2D/3D, butacas reclinables, candy bar.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img src="images/ent_arcade.jpg" alt="Arcade y videojuegos"></div>
+                    <div class="body">
+                        <h3>Arcade & VR</h3>
+                        <p class="meta">Simuladores, realidad virtual y clásicos.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="media"><img src="images/ent_roller.jpg" alt="Pista de patinaje"></div>
+                    <div class="body">
+                        <h3>Pista Roller</h3>
+                        <p class="meta">Alquiler de patines y clases inclusivas.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

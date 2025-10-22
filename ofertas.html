@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Ofertas</title>
+    <meta name="description" content="Descubrí ofertas y promociones vigentes en el Centro Urbano." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="ofertas">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container stack">
+            <h1>Ofertas</h1>
+            <div class="toolbar" role="region" aria-label="Filtros de ofertas">
+                <input id="search-ofertas" type="search" placeholder="Buscar oferta..." aria-label="Buscar oferta" />
+                <label class="visually-hidden" for="min-precio">Precio mínimo</label>
+                <input id="min-precio" type="number" min="0" placeholder="Mín $" />
+                <label class="visually-hidden" for="max-precio">Precio máximo</label>
+                <input id="max-precio" type="number" min="0" placeholder="Máx $" />
+                <select id="sort-ofertas" aria-label="Ordenar por">
+                    <option value="relevancia">Orden: Relevancia</option>
+                    <option value="precio-asc">Precio: menor a mayor</option>
+                    <option value="precio-desc">Precio: mayor a menor</option>
+                </select>
+            </div>
+
+            <section class="grid grid-3 results" aria-live="polite">
+                <article class="card" data-nombre="Zapatillas UrbanX" data-precio="39999">
+                    <div class="media"><img src="images/oferta_shoes.jpg" alt="Zapatillas UrbanX"></div>
+                    <div class="body">
+                        <h3>Zapatillas UrbanX</h3>
+                        <p class="meta">Antes $49.999 • Ahora <strong>$39.999</strong> <span class="badge">-20%</span>
+                        </p>
+                        <p>Calzado urbano, varias tallas y colores.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Auriculares Pro+" data-precio="24999">
+                    <div class="media"><img src="images/oferta_headphones.jpg" alt="Auriculares Pro más"></div>
+                    <div class="body">
+                        <h3>Auriculares Pro+</h3>
+                        <p class="meta">Antes $32.999 • Ahora <strong>$24.999</strong> <span class="badge">-24%</span>
+                        </p>
+                        <p>Cancelación activa de ruido y bluetooth 5.3.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Cafetera Espresso" data-precio="59999">
+                    <div class="media"><img src="images/oferta_coffee.jpg" alt="Cafetera Espresso"></div>
+                    <div class="body">
+                        <h3>Cafetera Espresso</h3>
+                        <p class="meta">Antes $79.999 • Ahora <strong>$59.999</strong> <span class="badge">-25%</span>
+                        </p>
+                        <p>Espuma perfecta, filtros reutilizables, compacta.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Lámpara LED Deco" data-precio="8999">
+                    <div class="media"><img src="images/oferta_lamp.jpg" alt="Lámpara LED Deco"></div>
+                    <div class="body">
+                        <h3>Lámpara LED Deco</h3>
+                        <p class="meta">Antes $11.999 • Ahora <strong>$8.999</strong> <span class="badge">-25%</span>
+                        </p>
+                        <p>Iluminación cálida regulable, bajo consumo.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Smartwatch Fit" data-precio="34999">
+                    <div class="media"><img src="images/oferta_watch.jpg" alt="Smartwatch Fit"></div>
+                    <div class="body">
+                        <h3>Smartwatch Fit</h3>
+                        <p class="meta">Antes $44.999 • Ahora <strong>$34.999</strong> <span class="badge">-22%</span>
+                        </p>
+                        <p>Medición de salud, notificaciones y GPS.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Set de Ollas" data-precio="45999">
+                    <div class="media"><img src="images/oferta_ollas.jpg" alt="Set de ollas"></div>
+                    <div class="body">
+                        <h3>Set de Ollas</h3>
+                        <p class="meta">Antes $62.999 • Ahora <strong>$45.999</strong> <span class="badge">-27%</span>
+                        </p>
+                        <p>Antiadherente, apto inducción, 7 piezas.</p>
+                    </div>
+                </article>
+            </section>
+
+            <p id="ofertas-empty" class="empty" hidden>No hay resultados para esos filtros.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

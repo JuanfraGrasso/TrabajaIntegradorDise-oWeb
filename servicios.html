@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Servicios</title>
+    <meta name="description"
+        content="Servicios esenciales del Centro Urbano: atención, seguridad, estacionamiento y más." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="servicios">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container stack">
+            <h1>Servicios</h1>
+            <section class="accordion" aria-label="Preguntas frecuentes">
+                <div class="accordion-item" open>
+                    <button class="accordion-header" aria-expanded="true">Atención al cliente</button>
+                    <div class="accordion-panel">
+                        <p>Stand central en planta baja. Consultas, extravíos, silla de ruedas, cochecitos y más.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">Seguridad</button>
+                    <div class="accordion-panel" hidden>
+                        <p>Monitoreo 24/7, respuesta inmediata y primeros auxilios.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">Estacionamiento</button>
+                    <div class="accordion-panel" hidden>
+                        <p>3 niveles cubiertos, tarifa por hora y bonificaciones por consumo.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">Cajeros automáticos</button>
+                    <div class="accordion-panel" hidden>
+                        <p>Red Banelco y Link, ubicados en ingresos A y C.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">Correo y encomiendas</button>
+                    <div class="accordion-panel" hidden>
+                        <p>Sucursal postal en primer piso. Retiro de compras online.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-3">
+                <article class="card">
+                    <div class="body">
+                        <h3>Wi‑Fi</h3>
+                        <p class="meta">Conexión gratuita en áreas comunes.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="body">
+                        <h3>Espacios amigos</h3>
+                        <p class="meta">Estaciones de hidratación y lactancia.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="body">
+                        <h3>Accesibilidad</h3>
+                        <p class="meta">Rampas, ascensores y baños adaptados.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

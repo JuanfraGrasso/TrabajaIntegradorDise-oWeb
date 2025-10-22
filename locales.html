@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centro Urbano | Locales</title>
+    <meta name="description" content="Buscá y filtrá los locales del Centro Urbano por rubro." />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="locales">
+    <a href="#contenido" class="visually-hidden">Saltar al contenido</a>
+
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Centro Urbano">
+                <img class="brand-img" src="images/logo.png" alt="Centro Urbano" />
+                <span class="visually-hidden">Centro Urbano</span>
+            </a>
+            <nav class="nav-links" aria-label="Principal">
+                <a href="index.html">Inicio</a>
+                <a href="locales.html">Locales</a>
+                <a href="gastronomia.html">Gastronomía</a>
+                <a href="entretenimientos.html">Entretenimientos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-pressed="false" title="Cambiar tema"
+                    aria-label="Cambiar tema">🌓</button>
+                <button id="burger" class="btn-icon burger" aria-expanded="false" aria-label="Abrir menú">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido" class="section">
+        <div class="container stack">
+            <h1>Locales</h1>
+            <div class="toolbar" role="region" aria-label="Filtros de locales">
+                <input id="search-locales" type="search" placeholder="Buscar por nombre..."
+                    aria-label="Buscar por nombre" />
+                <select id="filter-categoria" aria-label="Filtrar por rubro">
+                    <option value="">Todos los rubros</option>
+                    <option value="Indumentaria">Indumentaria</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Librería">Librería</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Alimentos">Alimentos</option>
+                </select>
+            </div>
+
+            <section id="lista-locales" class="grid grid-3 results" aria-live="polite">
+                <article class="card" data-nombre="Moda Nova" data-rubro="Indumentaria">
+                    <div class="media"><img src="images/local_moda.jpg" alt="Local de indumentaria Moda Nova"></div>
+                    <div class="body">
+                        <h3>Moda Nova</h3>
+                        <p class="meta">Rubro: Indumentaria</p>
+                        <p>Prendas urbanas y clásicas, talles inclusivos.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="TecnoPlus" data-rubro="Tecnología">
+                    <div class="media"><img src="images/local_tecno.jpg" alt="Local de tecnología TecnoPlus"></div>
+                    <div class="body">
+                        <h3>TecnoPlus</h3>
+                        <p class="meta">Rubro: Tecnología</p>
+                        <p>Smartphones, notebooks, audio y gaming.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Casa Viva" data-rubro="Hogar">
+                    <div class="media"><img src="images/local_hogar.jpg" alt="Local de hogar Casa Viva"></div>
+                    <div class="body">
+                        <h3>Casa Viva</h3>
+                        <p class="meta">Rubro: Hogar</p>
+                        <p>Deco, pequeños electrodomésticos y bazar.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Librería Atlas" data-rubro="Librería">
+                    <div class="media"><img src="images/local_libros.jpg" alt="Local Librería Atlas"></div>
+                    <div class="body">
+                        <h3>Librería Atlas</h3>
+                        <p class="meta">Rubro: Librería</p>
+                        <p>Libros, papelería, insumos escolares y artísticos.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="EcoMarket" data-rubro="Alimentos">
+                    <div class="media"><img src="images/local_eco.jpg" alt="Local EcoMarket"></div>
+                    <div class="body">
+                        <h3>EcoMarket</h3>
+                        <p class="meta">Rubro: Alimentos</p>
+                        <p>Productos orgánicos, sin TACC y veganos.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Bienestar+" data-rubro="Salud">
+                    <div class="media"><img src="images/local_salud.jpg" alt="Local Bienestar más"></div>
+                    <div class="body">
+                        <h3>Bienestar+</h3>
+                        <p class="meta">Rubro: Salud</p>
+                        <p>Farmacia, perfumería y dermocosmética.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="Urban Kids" data-rubro="Indumentaria">
+                    <div class="media"><img src="images/local_kids.jpg" alt="Local Urban Kids"></div>
+                    <div class="body">
+                        <h3>Urban Kids</h3>
+                        <p class="meta">Rubro: Indumentaria</p>
+                        <p>Moda infantil y juvenil, calzado y accesorios.</p>
+                    </div>
+                </article>
+                <article class="card" data-nombre="SmartFix" data-rubro="Tecnología">
+                    <div class="media"><img src="images/local_fix.jpg" alt="Local SmartFix"></div>
+                    <div class="body">
+                        <h3>SmartFix</h3>
+                        <p class="meta">Rubro: Tecnología</p>
+                        <p>Servicio técnico y accesorios para móviles.</p>
+                    </div>
+                </article>
+            </section>
+
+            <p id="locales-empty" class="empty" hidden>No se encontraron locales con esos filtros.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="cluster">
+                <span class="chip">📍 Av. Principal 123</span>
+                <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
+                <a class="chip" href="contacto.html">✉️ Contacto</a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Centro Urbano.</p>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
