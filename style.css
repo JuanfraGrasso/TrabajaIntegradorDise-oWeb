@@ -1,3 +1,5 @@
+/* CSS Reset and Base Styles */
+
 *,
 *::before,
 *::after {
@@ -17,6 +19,9 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
 }
 
 img,
@@ -109,140 +114,11 @@ html[data-theme="light"] {
     --color-bg-alt: #eef2f7;
 }
 
-body {
-    background: var(--color-bg) 60%;
-    color: var(--color-text);
-    font-family: var(--font-sans);
+html[data-theme="light"] .hero .lead {
+    color: #334155;
 }
 
-
-
-.container {
-    width: min(100% - 2rem, var(--maxw));
-    margin-inline: auto;
-}
-
-.stack {
-    display: grid;
-    gap: var(--space-6);
-}
-
-.cluster {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-}
-
-.grid {
-    display: grid;
-    gap: var(--space-6);
-}
-
-.grid-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-aside {
-    grid-template-columns: 1.2fr .8fr;
-}
-
-.mt-4 {
-    margin-top: var(--space-4);
-}
-
-.mt-6 {
-    margin-top: var(--space-6);
-}
-
-@media (max-width: 1024px) {
-    .grid-4 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-
-    .grid-4,
-    .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    .grid-aside {
-        grid-template-columns: 1fr;
-    }
-}
-
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-}
-
-.text-muted {
-    color: var(--color-text-muted);
-}
-
-.badge {
-    display: inline-block;
-    padding: .25rem .5rem;
-    border-radius: var(--radius-full);
-    font-size: .75rem;
-    background: #0b3b2b;
-    color: #7cf0a6;
-    border: 1px solid rgba(124, 240, 166, .2);
-}
-
-.chip {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    padding: .375rem .625rem;
-    border-radius: var(--radius-full);
-    background: var(--color-elev);
-    border: 1px solid var(--color-border);
-}
-
-
-
-h1,
-h2,
-h3 {
-    line-height: 1.2;
-}
-
-h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-}
-
-h2 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-}
-
-h3 {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-}
-
-p {
-    color: var(--color-text);
-}
-
-
+/* General Styles */
 
 .site-header {
     position: sticky;
@@ -336,34 +212,145 @@ p {
     display: none;
 }
 
-@media (max-width: 900px) {
-    .burger {
-        display: inline-grid;
-    }
-
-    .nav-links {
-        position: fixed;
-        inset: 64px 0 auto 0;
-        background: var(--menu-bg);
-        border-bottom: 1px solid var(--glass-border);
-        display: grid;
-        padding: var(--space-4);
-        transform-origin: top center;
-        transform: scaleY(0);
-        transition: .2s ease;
-        box-shadow: var(--shadow-lg);
-    }
-
-    .nav-links.open {
-        transform: scaleY(1);
-    }
-}
-
-
-
 .section {
     padding: clamp(2rem, 4vw, 4rem) 0;
 }
+
+.container {
+    width: min(100% - 2rem, var(--maxw));
+    margin-inline: auto;
+}
+
+.stack {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.cluster {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.grid {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.grid-aside {
+    grid-template-columns: 1.2fr .8fr;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-6 {
+    margin-top: var(--space-6);
+}
+
+.mb-6 {
+    margin-bottom: var(--space-6);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.badge {
+    display: inline-block;
+    padding: .25rem .5rem;
+    border-radius: var(--radius-full);
+    font-size: .75rem;
+    background: #0b3b2b;
+    color: #7cf0a6;
+    border: 1px solid rgba(124, 240, 166, .2);
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .375rem .625rem;
+    border-radius: var(--radius-full);
+    background: var(--color-elev);
+    border: 1px solid var(--color-border);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+h3 {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+}
+
+p {
+    color: var(--color-text);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s;
+    background: var(--color-elev);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+}
+
+.to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* Index Styles */
 
 .hero {
     padding: clamp(3rem, 6vw, 6rem) 0;
@@ -392,10 +379,6 @@ p {
     font-size: clamp(1rem, 2.2vw, 1.125rem);
 }
 
-html[data-theme="light"] .hero .lead {
-    color: #334155;
-}
-
 .cta {
     display: inline-flex;
     align-items: center;
@@ -421,22 +404,6 @@ html[data-theme="light"] .hero .lead {
     grid-template-columns: repeat(12, 1fr);
     display: grid;
     gap: var(--space-6);
-}
-
-.span-4 {
-    grid-column: span 4;
-}
-
-@media (max-width: 1024px) {
-    .span-4 {
-        grid-column: span 6;
-    }
-}
-
-@media (max-width: 768px) {
-    .span-4 {
-        grid-column: span 12;
-    }
 }
 
 .card {
@@ -476,18 +443,6 @@ html[data-theme="light"] .hero .lead {
     border-radius: var(--radius-lg);
     padding: var(--space-6);
 }
-
-.panel h3 {
-    margin-bottom: var(--space-6);
-}
-
-@media (max-width: 1024px) {
-    .hero-inner {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 
 form {
     display: grid;
@@ -565,7 +520,7 @@ textarea:focus {
     filter: brightness(1.05);
 }
 
-
+/* Servicios Styles */
 
 .accordion {
     display: grid;
@@ -601,45 +556,6 @@ textarea:focus {
     background: var(--section-muted);
 }
 
-
-
-.modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .6);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 60;
-}
-
-.modal-backdrop.open {
-    display: flex;
-}
-
-.modal {
-    width: min(100% - 2rem, 720px);
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-}
-
-.modal header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .75rem 1rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.modal .content {
-    padding: 1rem;
-}
-
-
-
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -666,7 +582,7 @@ textarea:focus {
     display: block;
 }
 
-
+/* Entretretenimiento Styles */
 
 .carousel {
     position: relative;
@@ -712,7 +628,7 @@ textarea:focus {
     right: .75rem;
 }
 
-
+/* Toolbar Styles */
 
 .toolbar {
     display: flex;
@@ -738,7 +654,7 @@ textarea:focus {
     border-radius: var(--radius-sm);
 }
 
-
+/* Footer Styles */
 
 .site-footer {
     margin-top: var(--space-12);
@@ -757,39 +673,99 @@ textarea:focus {
     font-size: .9rem;
 }
 
+/* JavaScript Styles */
 
-
-.reveal {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity .4s ease, transform .4s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-.to-top {
+.modal-backdrop {
     position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 40;
-    opacity: 0;
-    pointer-events: none;
-    transition: .2s;
-    background: var(--color-elev);
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
 }
 
-.to-top.visible {
-    opacity: 1;
-    pointer-events: auto;
+.modal-backdrop.open {
+    display: flex;
+}
+
+.modal {
+    width: min(100% - 2rem, 720px);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.modal header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal .content {
+    padding: 1rem;
+}
+
+/* Responsive Grid Adjustments */
+
+@media (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .span-4 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 900px) {
+    .burger {
+        display: inline-grid;
+    }
+
+    .nav-links {
+        position: fixed;
+        inset: 64px 0 auto 0;
+        background: var(--menu-bg);
+        border-bottom: 1px solid var(--glass-border);
+        display: grid;
+        padding: var(--space-4);
+        transform-origin: top center;
+        transform: scaleY(0);
+        transition: .2s ease;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-links.open {
+        transform: scaleY(1);
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-aside {
+        grid-template-columns: 1fr;
+    }
+
+    .span-4 {
+        grid-column: span 12;
+    }
 }
