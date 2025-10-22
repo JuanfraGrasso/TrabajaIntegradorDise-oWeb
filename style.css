@@ -22,6 +22,10 @@ body {
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
+    flex: 1;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 img,
@@ -214,6 +218,7 @@ html[data-theme="light"] .hero .lead {
 
 .section {
     padding: clamp(2rem, 4vw, 4rem) 0;
+    flex: 1;
 }
 
 .container {
@@ -294,6 +299,10 @@ html[data-theme="light"] .hero .lead {
     border: 1px solid var(--color-border);
 }
 
+.no-under {
+    text-decoration: none;
+}
+
 h1,
 h2,
 h3 {
@@ -349,6 +358,12 @@ p {
     pointer-events: auto;
 }
 
+.sitio {
+    color: var(--color-text);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 700;
+}
+
 
 /* Index Styles */
 
@@ -363,7 +378,7 @@ p {
 }
 
 .hero-card {
-    background: radial-gradient(1200px 240px at 0% -10%, rgba(124, 240, 166, .25), rgba(124, 240, 166, 0)), var(--color-elev);
+    background: radial-gradient(1200px 240px at 0% -10%, rgba(104, 193, 235, 0.25), rgba(124, 240, 166, 0)), var(--color-elev);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-8);
@@ -390,7 +405,7 @@ p {
 }
 
 .cta.primary {
-    background: linear-gradient(135deg, #22c55e, #3dd1f2);
+    background: linear-gradient(135deg, #5a6bcc, #3dd1f2);
     color: #052b23;
     font-weight: 700;
 }
@@ -506,7 +521,7 @@ textarea:focus {
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #22c55e, #3dd1f2);
+    background: linear-gradient(135deg, #5a6bcc, #3dd1f2);
     color: #052b23;
     font-weight: 700;
 }
@@ -708,6 +723,12 @@ textarea:focus {
 
 .modal .content {
     padding: 1rem;
+}
+
+.modal .content img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* Responsive Grid Adjustments */

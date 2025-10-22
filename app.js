@@ -25,9 +25,11 @@ const storage = {
 
 function initTheme() {
     const saved = storage.get('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+    const theme = saved === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
     const btn = $('#theme-toggle');
     if (btn) btn.setAttribute('aria-pressed', saved === 'light');
+    setBrandLogoForTheme(theme);
 }
 
 function toggleTheme() {
@@ -37,6 +39,16 @@ function toggleTheme() {
     storage.set('theme', next);
     const btn = $('#theme-toggle');
     if (btn) btn.setAttribute('aria-pressed', next === 'light');
+    setBrandLogoForTheme(next);
+}
+
+function setBrandLogoForTheme(theme) {
+    const isDark = theme === 'dark';
+    const lightSrc = 'images/logo.png';
+    const darkSrc = 'images/logo_blanco.png';
+    $$('.brand-img').forEach(img => {
+        img.setAttribute('src', isDark ? darkSrc : lightSrc);
+    });
 }
 
 function initNav() {
@@ -138,7 +150,8 @@ function initGallery() {
     on('click', '.gallery .item', (e, item) => {
         const img = item.querySelector('img');
         const node = document.createElement('div');
-        node.innerHTML = `<img src="${img?.src || ''}" alt="${img?.alt || ''}" style="max-width:100%;height:auto;display:block">`;
+        node.title = img?.alt || '';
+        node.innerHTML = `<img src="${img?.src || ''}" alt="${img?.alt || ''}">`;
         openModal(node);
     });
 }

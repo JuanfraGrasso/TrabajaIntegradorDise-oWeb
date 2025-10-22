@@ -39,8 +39,8 @@
             <h1>Ofertas</h1>
             <div class="toolbar" role="region" aria-label="Filtros de ofertas">
                 <input id="search-ofertas" type="search" placeholder="Buscar oferta..." aria-label="Buscar oferta" />
-                <input id="min-precio" type="number" min="0" placeholder="Mín $" />
-                <input id="max-precio" type="number" min="0" placeholder="Máx $" />
+                <input id="min-precio" type="number" step="1000" min="0" placeholder="Mín $" />
+                <input id="max-precio" type="number" step="1000" min="0" placeholder="Máx $" />
                 <select id="sort-ofertas" aria-label="Ordenar por">
                     <option value="relevancia">Orden: Relevancia</option>
                     <option value="precio-asc">Precio: menor a mayor</option>
@@ -114,7 +114,7 @@
             <div class="cluster">
                 <span class="chip">📍 Av. Principal 123</span>
                 <span class="chip">🕒 Lunes a Dom: 10 a 22 hs</span>
-                <a class="chip" href="contacto.html">✉️ Contacto</a>
+                <a class="chip no-under" href="contacto.html">✉️ Contacto</a>
             </div>
             <p class="copyright">© <span id="year"></span> Galería Urbana.</p>
         </div>
