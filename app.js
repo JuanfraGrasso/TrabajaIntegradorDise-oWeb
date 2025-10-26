@@ -162,15 +162,21 @@ function initCarousel() {
     const slides = $$('.carousel-slide');
     const prev = $('.carousel .prev');
     const next = $('.carousel .next');
+    const dots = $$('.carousel-indicators button');
     if (!track || !slides.length) return;
     let index = 0;
-    function update() { track.style.transform = `translateX(-${index * 100}%)`; }
+    function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+    }
     function go(dir) { index = (index + dir + slides.length) % slides.length; update(); }
     prev?.addEventListener('click', () => go(-1));
     next?.addEventListener('click', () => go(1));
     let timer = setInterval(() => go(1), 5000);
     $('.carousel')?.addEventListener('mouseenter', () => clearInterval(timer));
     $('.carousel')?.addEventListener('mouseleave', () => timer = setInterval(() => go(1), 5000));
+    dots.forEach((btn, i) => btn.addEventListener('click', () => { index = i; update(); }));
+    update();
 }
 
 function textMatch(text, query) { return text.toLowerCase().includes(query.toLowerCase()); }
@@ -306,6 +312,85 @@ function initNewsletter() {
     });
 }
 
+function initChatbot() {
+    if (!isOnPage('contacto')) return;
+    const chat = $('#chatbot');
+    const win = $('#chat-window');
+    const form = $('#chat-form');
+    const input = $('#chat-input');
+    if (!chat || !win || !form || !input) return;
+
+    const optionsText = (
+        'Elegí una opción:\n' +
+        '1) Locales\n' +
+        '2) Horarios\n' +
+        '3) Ubicación\n' +
+        '4) Ofertas\n' +
+        '5) Gastronomía\n' +
+        '6) Entretenimientos\n' +
+        '7) Servicios\n' +
+        '8) Contacto'
+    );
+
+    const responses = {
+        stores: 'Podés ver todos los locales en <a href="locales.html">Locales</a>. Usá el buscador por nombre o rubro para filtrar.',
+        hours: 'Horarios: Lunes a Domingo de 10 a 22 hs.',
+        location: 'Estamos en Av. Principal 123, Ciudad. Cómo llegar: Colectivos 15, 43, 72 • Subte: Línea C (Est. Centro).',
+        offers: 'Encontrá las promociones vigentes en <a href="ofertas.html">Ofertas</a>. Podés filtrar por precio y ordenar.',
+        food: 'Descubrí propuestas de <a href="gastronomia.html">Gastronomía</a> con una galería de imágenes ampliables.',
+        fun: 'Mirá <a href="entretenimientos.html">Entretenimientos</a> con carrusel de actividades.',
+        services: 'Consultá <a href="servicios.html">Servicios</a> y abrí los detalles en el acordeón.',
+        contact: 'Escribinos por <a href="contacto.html">este formulario</a> o a <a href="mailto:contacto@galeriaurbana.test">contacto@galeriaurbana.test</a>.'
+    };
+
+    const mapToKey = (txt) => {
+        const t = (txt || '').trim().toLowerCase();
+        if (['1', 'locales', 'tiendas', 'negocios'].includes(t)) return 'stores';
+        if (['2', 'horarios', 'horario', 'hours'].includes(t)) return 'hours';
+        if (['3', 'ubicacion', 'ubicación', 'direccion', 'dirección', 'mapa', 'location'].includes(t)) return 'location';
+        if (['4', 'ofertas', 'promo', 'promociones'].includes(t)) return 'offers';
+        if (['5', 'gastronomia', 'gastronomía', 'comida', 'food'].includes(t)) return 'food';
+        if (['6', 'entretenimientos', 'entretenimiento', 'ocio', 'fun'].includes(t)) return 'fun';
+        if (['7', 'servicios', 'service', 'services'].includes(t)) return 'services';
+        if (['8', 'contacto', 'contact', 'email'].includes(t)) return 'contact';
+        return null;
+    };
+
+    function addMsg(text, from = 'bot', asHTML = false) {
+        const div = document.createElement('div');
+        div.className = `chat-msg ${from === 'user' ? 'from-user' : 'from-bot'}`;
+        if (asHTML) div.innerHTML = text; else div.textContent = text;
+        win.appendChild(div);
+        win.scrollTop = win.scrollHeight;
+    }
+
+    function showMenu() {
+        addMsg('Hola, soy tu asistente virtual. Puedo ayudarte con información del centro.');
+        addMsg(optionsText);
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = input.value;
+        if (!val.trim()) return;
+        addMsg(val, 'user');
+        const key = mapToKey(val);
+        if (!key) {
+            addMsg('Opción no válida. Probá nuevamente con el número o la palabra clave.');
+            addMsg(optionsText);
+        } else {
+            addMsg(responses[key], 'bot', true);
+            addMsg('¿Querés consultar otra cosa?');
+            addMsg(optionsText);
+        }
+        input.value = '';
+        input.focus();
+    });
+
+    // Initial greeting
+    showMenu();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.body.dataset.page = getPageSlug();
     $$('#year').forEach(el => el.textContent = new Date().getFullYear());
@@ -320,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLocales();
     initOfertas();
     initContacto();
+    initChatbot();
     initNewsletter();
 
     $('#theme-toggle')?.addEventListener('click', toggleTheme);

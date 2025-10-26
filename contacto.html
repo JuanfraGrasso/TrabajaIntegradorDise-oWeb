@@ -82,22 +82,14 @@
                 </form>
             </section>
 
-            <aside class="panel stack">
-                <h2>Información</h2>
-                <p>Av. Principal 123, Ciudad</p>
-                <p>Horarios: Lunes a Domingo de 10 a 22 hs</p>
-                <div class="card">
-                    <div class="body">
-                        <h3>¿Cómo llegar?</h3>
-                        <p class="text-muted">Colectivos: 15, 43, 72 • Subte: Línea C (Est. Centro)</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="body">
-                        <h3>Mapa</h3>
-                        <p class="text-muted">(Integrá un mapa embebido si lo necesitás.)</p>
-                    </div>
-                </div>
+            <aside class="panel stack" id="chatbot">
+                <h2>Asistente</h2>
+                <div class="chat-window" id="chat-window" aria-live="polite" aria-relevant="additions"></div>
+                <form id="chat-form" class="chat-input-row" autocomplete="off">
+                    <input id="chat-input" type="text" name="chat" placeholder="Escribí una opción (ej: 1)" aria-label="Escribir opción del asistente" required />
+                    <button class="btn" type="submit">Enviar</button>
+                </form>
+                <p class="text-muted">Tip: respondé con el número o la palabra clave (por ejemplo, 1 o horarios).</p>
             </aside>
         </div>
     </main>

@@ -368,7 +368,7 @@ p {
 /* Index Styles */
 
 .hero {
-    padding: clamp(3rem, 6vw, 6rem) 0;
+    padding: clamp(3rem, 6vw, 3rem) 0;
 }
 
 .hero-inner {
@@ -553,6 +553,7 @@ textarea:focus {
     width: 100%;
     text-align: left;
     padding: .875rem 1rem;
+    color: var(--color-text);
     background: var(--section-muted);
     cursor: pointer;
     display: flex;
@@ -565,6 +566,10 @@ textarea:focus {
     gap: .5rem;
     padding: .875rem 1rem;
     border-top: 1px solid var(--color-border);
+}
+
+.accordion-panel[hidden] {
+    display: none !important;
 }
 
 .accordion-item[open] .accordion-header {
@@ -615,11 +620,49 @@ textarea:focus {
 .carousel-slide {
     min-width: 100%;
     aspect-ratio: 16/9;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    color: #9ee6ff;
-    background: linear-gradient(135deg, #0a253a, #113357);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-slide .caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1rem 1rem 1.25rem;
+    color: #ffffff;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .35) 30%, rgba(0, 0, 0, .6) 100%);
+}
+
+.carousel-slide .caption h3,
+.carousel-slide .caption p {
+    color: #ffffff;
+}
+
+.carousel-indicators {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: .75rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-strong);
+    background: rgba(255, 255, 255, .4);
+}
+
+.carousel-indicators button[aria-current="true"] {
+    background: #ffffff;
 }
 
 .carousel .control {
@@ -641,6 +684,48 @@ textarea:focus {
 
 .carousel .next {
     right: .75rem;
+}
+
+/* Chat Styles */
+
+.chat-window {
+    background: var(--color-elev);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    height: 600px;
+    overflow: auto;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.chat-input-row input[type="text"] {
+    flex: 1;
+}
+
+.chat-msg {
+    width: fit-content;
+    padding: .5rem .75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    white-space: pre-line;
+}
+
+.chat-msg.from-bot {
+    background: rgba(56, 248, 82, 0.25);
+    align-self: flex-start;
+}
+
+.chat-msg.from-user {
+    background: rgba(56, 189, 248, .25);
+    align-self: flex-end;
 }
 
 /* Toolbar Styles */
