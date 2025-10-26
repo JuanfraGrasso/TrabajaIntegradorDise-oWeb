@@ -207,6 +207,25 @@ function initLocales() {
     apply();
 }
 
+function initLocalesMap() {
+    if (!isOnPage('locales')) return;
+    on('click', '.btn-ubicacion', (e, btn) => {
+        const x = parseFloat(btn.dataset.x || '50');
+        const y = parseFloat(btn.dataset.y || '50');
+        const nombre = btn.dataset.nombre || 'Ubicación';
+        const node = document.createElement('div');
+        node.className = 'map-view';
+        node.innerHTML = `
+            <img src="images/mapa.png" alt="Mapa de la galería" />
+            <div class="map-marker" style="left:${x}%; top:${y}%;"></div>
+            <div class="map-label" style="left:${x}%; top:${y}%;">${nombre}</div>
+        `;
+        openModal(node);
+        const title = $('#modal-title');
+        if (title) title.textContent = 'Mapa';
+    });
+}
+
 function initOfertas() {
     if (!isOnPage('ofertas')) return;
     const search = $('#search-ofertas');
@@ -403,6 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGallery();
     initCarousel();
     initLocales();
+    initLocalesMap();
     initOfertas();
     initContacto();
     initChatbot();

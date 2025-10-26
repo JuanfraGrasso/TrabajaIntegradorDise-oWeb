@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Galería Urbana | Locales</title>
     <meta name="description" content="Buscá y filtrá los locales de Galería Urbana por rubro." />
-    <link rel="icon" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="images/favicon.png?v=2" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -35,7 +35,7 @@
     </header>
 
     <main id="contenido" class="section">
-        <div class="container stack">
+        <div class="container stack reveal">
             <h1>Locales</h1>
             <div class="toolbar" role="region" aria-label="Filtros de locales">
                 <input id="search-locales" type="search" placeholder="Buscar por nombre..."
@@ -52,13 +52,13 @@
             </div>
 
             <section id="lista-locales" class="grid grid-3 results" aria-live="polite">
-                </article>
                 <article class="card" data-nombre="Zephir" data-rubro="Indumentaria">
                     <div class="media"><img src="images/local_ropa.jpg" alt="Local de ropa Zephir"></div>
                     <div class="body">
                         <a class = "sitio" href="https://merruivaluade.github.io/LocalComercialZephir/camisas.html">Zephir</a>
                         <p class="meta">Rubro: Indumentaria</p>
                         <p>Camisas, denim y prendas básicas bien hechas.</p>
+                        <button class="btn ghost btn-ubicacion" data-x="23" data-y="80" data-nombre="Zephir" aria-label="Ver ubicación de Zephir en el mapa">Ver ubicación</button>
                     </div>
                 </article>
                 <article class="card" data-nombre="Mileni" data-rubro="Joyería">
@@ -67,6 +67,7 @@
                         <a class = "sitio" href="https://mileraschella.github.io/Local-Comercial-Mileni/index.html">Mileni</a>
                         <p class="meta">Rubro: Joyería</p>
                         <p>Joyas unicas en plata, acero quirúrgico y oro.</p>
+                        <button class="btn ghost btn-ubicacion" data-x="61" data-y="80" data-nombre="Mileni" aria-label="Ver ubicación de Mileni en el mapa">Ver ubicación</button>
                     </div>
                 </article>
                 <article class="card" data-nombre="Cafe Urbano" data-rubro="Alimentos">
@@ -75,6 +76,7 @@
                         <a class = "sitio" href="https://juanfragrasso.github.io/CafeUrbanoV2/index.html">Café Urbano</a>
                         <p class="meta">Rubro: Alimentos</p>
                         <p>Cafetería y pastelería artesanal.</p>
+                        <button class="btn ghost btn-ubicacion" data-x="83" data-y="50" data-nombre="Café Urbano" aria-label="Ver ubicación de Café Urbano en el mapa">Ver ubicación</button>
                     </div>
                 </article>
             </section>
