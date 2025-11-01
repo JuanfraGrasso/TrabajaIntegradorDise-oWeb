@@ -44,8 +44,8 @@ function toggleTheme() {
 
 function setBrandLogoForTheme(theme) {
     const isDark = theme === 'dark';
-    const lightSrc = 'images/logo.png';
-    const darkSrc = 'images/logo_blanco.png';
+    const lightSrc = 'images/logo_nuevo.png';
+    const darkSrc = 'images/logo_nuevo_blanco.png';
     $$('.brand-img').forEach(img => {
         img.setAttribute('src', isDark ? darkSrc : lightSrc);
     });
@@ -120,8 +120,7 @@ function openModal(contentNode) {
         backdrop.id = 'modal-backdrop';
         backdrop.innerHTML = `
 			<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-				<header>
-					<h3 id="modal-title">Vista</h3>
+				<header id="modal-btn-header">
 					<button class="btn-icon" id="modal-close" aria-label="Cerrar">✕</button>
 				</header>
 				<div class="content"></div>
