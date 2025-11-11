@@ -300,34 +300,11 @@ p {
     transform: translateY(0);
 }
 
-.to-top {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 40;
-    opacity: 0;
-    pointer-events: none;
-    transition: .2s;
-    background: var(--color-elev);
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-}
-
-.to-top.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 .sitio {
     color: var(--color-text);
     font-size: clamp(1.125rem, 2vw, 1.375rem);
     font-weight: 700;
 }
-
 
 /* Index Styles */
 
@@ -369,7 +346,7 @@ p {
 }
 
 .cta.primary {
-    background:rgba(90, 107, 204, 0.6);
+    background:rgba(41, 98, 221, 0.6);
     color: #052b23;
     font-weight: 700;
 }

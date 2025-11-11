@@ -1,5 +1,8 @@
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const storage = {
+    get(key, fallback = null) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
+    set(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
+    del(key) { localStorage.removeItem(key); }
+};
 
 function getPageSlug() {
     const file = (location.pathname.split('/').pop() || 'index.html');
@@ -17,17 +20,11 @@ function isOnPage(id) {
     return (document.body.dataset.page === id) || (getPageSlug() === id);
 }
 
-const storage = {
-    get(key, fallback = null) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
-    set(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
-    del(key) { localStorage.removeItem(key); }
-};
-
 function initTheme() {
     const saved = storage.get('theme') || 'light';
     const theme = saved === 'dark' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
-    const btn = $('#theme-toggle');
+    const btn = document.querySelector('#theme-toggle');
     if (btn) btn.setAttribute('aria-pressed', saved === 'light');
     setBrandLogoForTheme(theme);
 }
@@ -37,7 +34,7 @@ function toggleTheme() {
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     storage.set('theme', next);
-    const btn = $('#theme-toggle');
+    const btn = document.querySelector('#theme-toggle');
     if (btn) btn.setAttribute('aria-pressed', next === 'light');
     setBrandLogoForTheme(next);
 }
@@ -46,14 +43,14 @@ function setBrandLogoForTheme(theme) {
     const isDark = theme === 'dark';
     const lightSrc = 'images/logo_nuevo.png';
     const darkSrc = 'images/logo_nuevo_blanco.png';
-    $$('.brand-img').forEach(img => {
+    Array.from(document.querySelectorAll('.brand-img')).forEach(img => {
         img.setAttribute('src', isDark ? darkSrc : lightSrc);
     });
 }
 
 function initNav() {
-    const menu = $('.nav-links');
-    const burger = $('#burger');
+    const menu = document.querySelector('.nav-links');
+    const burger = document.querySelector('#burger');
     if (!menu || !burger) return;
     burger.addEventListener('click', () => {
         const open = menu.classList.toggle('open');
@@ -66,7 +63,7 @@ function initNav() {
         }
     });
     const path = location.pathname.split('/').pop() || 'index.html';
-    $$('.nav-links a').forEach(a => {
+    Array.from(document.querySelectorAll('.nav-links a')).forEach(a => {
         const href = a.getAttribute('href');
         if (href.endsWith(path)) {
             a.setAttribute('aria-current', 'page');
@@ -74,19 +71,8 @@ function initNav() {
     });
 }
 
-function initToTop() {
-    const btn = $('#to-top');
-    if (!btn) return;
-    const reveal = () => {
-        if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible');
-    };
-    window.addEventListener('scroll', reveal, { passive: true });
-    reveal();
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-
 function initReveal() {
-    const els = $$('.reveal');
+    const els = Array.from(document.querySelectorAll('.reveal'));
     if (!els.length) return;
     const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
@@ -113,7 +99,7 @@ function initAccordion() {
 
 let lastFocused = null;
 function openModal(contentNode) {
-    let backdrop = $('#modal-backdrop');
+    let backdrop = document.querySelector('#modal-backdrop');
     if (!backdrop) {
         backdrop = document.createElement('div');
         backdrop.className = 'modal-backdrop';
@@ -132,14 +118,16 @@ function openModal(contentNode) {
     if (contentNode) content.appendChild(contentNode);
     lastFocused = document.activeElement;
     backdrop.classList.add('open');
-    $('#modal-close')?.focus();
+    document.querySelector('#modal-close')?.focus();
 }
+
 function closeModal() {
-    const backdrop = $('#modal-backdrop');
+    const backdrop = document.querySelector('#modal-backdrop');
     if (!backdrop) return;
     backdrop.classList.remove('open');
     if (lastFocused) lastFocused.focus();
 }
+
 on('click', '#modal-close', closeModal);
 on('click', '#modal-backdrop', (e, el) => { if (e.target === el) closeModal(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
@@ -157,11 +145,11 @@ function initGallery() {
 
 function initCarousel() {
     if (!isOnPage('entretenimientos')) return;
-    const track = $('.carousel-track');
-    const slides = $$('.carousel-slide');
-    const prev = $('.carousel .prev');
-    const next = $('.carousel .next');
-    const dots = $$('.carousel-indicators button');
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const prev = document.querySelector('.carousel .prev');
+    const next = document.querySelector('.carousel .next');
+    const dots = Array.from(document.querySelectorAll('.carousel-indicators button'));
     if (!track || !slides.length) return;
     let index = 0;
     function update() {
@@ -172,8 +160,8 @@ function initCarousel() {
     prev?.addEventListener('click', () => go(-1));
     next?.addEventListener('click', () => go(1));
     let timer = setInterval(() => go(1), 5000);
-    $('.carousel')?.addEventListener('mouseenter', () => clearInterval(timer));
-    $('.carousel')?.addEventListener('mouseleave', () => timer = setInterval(() => go(1), 5000));
+    document.querySelector('.carousel')?.addEventListener('mouseenter', () => clearInterval(timer));
+    document.querySelector('.carousel')?.addEventListener('mouseleave', () => timer = setInterval(() => go(1), 5000));
     dots.forEach((btn, i) => btn.addEventListener('click', () => { index = i; update(); }));
     update();
 }
@@ -182,12 +170,12 @@ function textMatch(text, query) { return text.toLowerCase().includes(query.toLow
 
 function initLocales() {
     if (!isOnPage('locales')) return;
-    const search = $('#search-locales');
-    const category = $('#filter-categoria');
-    const results = $('#lista-locales');
-    const empty = $('#locales-empty');
+    const search = document.querySelector('#search-locales');
+    const category = document.querySelector('#filter-categoria');
+    const results = document.querySelector('#lista-locales');
+    const empty = document.querySelector('#locales-empty');
     if (!results) return;
-    const cards = $$('.card[data-nombre]');
+    const cards = Array.from(document.querySelectorAll('.card[data-nombre]'));
     const apply = () => {
         const q = search?.value.trim() || '';
         const cat = category?.value || '';
@@ -220,19 +208,19 @@ function initLocalesMap() {
             <div class="map-label" style="left:${x}%; top:${y}%;">${nombre}</div>
         `;
         openModal(node);
-        const title = $('#modal-title');
+        const title = document.querySelector('#modal-title');
         if (title) title.textContent = 'Mapa';
     });
 }
 
 function initOfertas() {
     if (!isOnPage('ofertas')) return;
-    const search = $('#search-ofertas');
-    const sort = $('#sort-ofertas');
-    const min = $('#min-precio');
-    const max = $('#max-precio');
-    const cards = $$('.card[data-precio]');
-    const empty = $('#ofertas-empty');
+    const search = document.querySelector('#search-ofertas');
+    const sort = document.querySelector('#sort-ofertas');
+    const min = document.querySelector('#min-precio');
+    const max = document.querySelector('#max-precio');
+    const cards = Array.from(document.querySelectorAll('.card[data-precio]'));
+    const empty = document.querySelector('#ofertas-empty');
 
     function apply() {
         const q = search?.value.trim() || '';
@@ -256,7 +244,7 @@ function initOfertas() {
 
 function initContacto() {
     if (!isOnPage('contacto')) return;
-    const form = $('#contacto-form');
+    const form = document.querySelector('#contacto-form');
     if (!form) return;
     const key = 'contacto-draft-v1';
 
@@ -284,7 +272,7 @@ function initContacto() {
         if (box) box.textContent = '';
     }
 
-    $$('#contacto-form input, #contacto-form textarea, #contacto-form select').forEach(el => {
+    Array.from(document.querySelectorAll('#contacto-form input, #contacto-form textarea, #contacto-form select')).forEach(el => {
         el.addEventListener('input', () => clearError(el));
     });
 
@@ -332,10 +320,10 @@ function initNewsletter() {
 
 function initChatbot() {
     if (!isOnPage('contacto')) return;
-    const chat = $('#chatbot');
-    const win = $('#chat-window');
-    const form = $('#chat-form');
-    const input = $('#chat-input');
+    const chat = document.querySelector('#chatbot');
+    const win = document.querySelector('#chat-window');
+    const form = document.querySelector('#chat-form');
+    const input = document.querySelector('#chat-input');
     if (!chat || !win || !form || !input) return;
 
     const optionsText = (
@@ -411,11 +399,10 @@ function initChatbot() {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.body.dataset.page = getPageSlug();
-    $$('#year').forEach(el => el.textContent = new Date().getFullYear());
+    Array.from(document.querySelectorAll('#year')).forEach(el => el.textContent = new Date().getFullYear());
 
     initTheme();
     initNav();
-    initToTop();
     initReveal();
     initAccordion();
     initGallery();
@@ -427,6 +414,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatbot();
     initNewsletter();
 
-    $('#theme-toggle')?.addEventListener('click', toggleTheme);
+    document.querySelector('#theme-toggle')?.addEventListener('click', toggleTheme);
 });
 
