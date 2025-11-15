@@ -216,7 +216,6 @@ function initLocalesMap() {
 function initOfertas() {
     if (!isOnPage('ofertas')) return;
     const search = document.querySelector('#search-ofertas');
-    const sort = document.querySelector('#sort-ofertas');
     const min = document.querySelector('#min-precio');
     const max = document.querySelector('#max-precio');
     const cards = Array.from(document.querySelectorAll('.card[data-precio]'));
@@ -231,14 +230,12 @@ function initOfertas() {
             const nombre = c.dataset.nombre || '';
             return (!q || textMatch(nombre, q)) && precio >= minV && precio <= maxV;
         });
-        const mode = sort?.value || 'relevancia';
-        if (mode === 'precio-asc') filtered.sort((a, b) => Number(a.dataset.precio) - Number(b.dataset.precio));
-        if (mode === 'precio-desc') filtered.sort((a, b) => Number(b.dataset.precio) - Number(a.dataset.precio));
+
         cards.forEach(c => c.style.display = 'none');
         filtered.forEach(c => c.style.display = 'grid');
         if (empty) empty.hidden = filtered.length !== 0;
     }
-    [search, sort, min, max].forEach(el => el?.addEventListener(el?.tagName === 'SELECT' ? 'change' : 'input', apply));
+    [search, min, max].forEach(el => el?.addEventListener(el?.tagName === 'SELECT' ? 'change' : 'input', apply));
     apply();
 }
 

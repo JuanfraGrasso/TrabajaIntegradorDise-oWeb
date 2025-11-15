@@ -41,11 +41,6 @@
                 <input id="search-ofertas" type="search" placeholder="Buscar oferta..." aria-label="Buscar oferta" />
                 <input id="min-precio" type="number" step="1000" min="0" placeholder="Mín $" />
                 <input id="max-precio" type="number" step="1000" min="0" placeholder="Máx $" />
-                <select id="sort-ofertas" aria-label="Ordenar por">
-                    <option value="relevancia">Orden: Relevancia</option>
-                    <option value="precio-asc">Precio: menor a mayor</option>
-                    <option value="precio-desc">Precio: mayor a menor</option>
-                </select>
             </div>
 
             <section class="grid grid-3 results" aria-live="polite">
@@ -85,6 +80,16 @@
                         <p class="meta">Antes $88.500 • Ahora <strong>$62.000</strong> <span class="badge">10%</span>
                         </p>
                         <p>Botella de 100ml</p>
+                    </div>
+                </article>
+
+                <article class="card" data-nombre="Anillo Delicado" data-precio="11000">
+                    <div class="media"><img src="images/joyas_oferta.jpg" alt="Anillo Delicado"></div>
+                    <div class="body">
+                        <h3>Anillo Delicado</h3>
+                        <p class="meta">Antes $22.000 • Ahora <strong>$11.000</strong> <span class="badge">50%</span>
+                        </p>
+                        <p>Chapado en oro 18K</p>
                     </div>
                 </article>
             </section>
