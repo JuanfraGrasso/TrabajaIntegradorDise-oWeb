@@ -30,7 +30,7 @@ function initTheme() {
 }
 
 function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const current = storage.get('theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     storage.set('theme', next);
@@ -86,6 +86,7 @@ function initReveal() {
 }
 
 function initAccordion() {
+    if (!isOnPage('servicios')) return;
     on('click', '.accordion-header', (e, btn) => {
         const item = btn.closest('.accordion-item');
         if (!item) return;
@@ -97,7 +98,6 @@ function initAccordion() {
     });
 }
 
-let lastFocused = null;
 function openModal(contentNode) {
     let backdrop = document.querySelector('#modal-backdrop');
     if (!backdrop) {
@@ -116,21 +116,14 @@ function openModal(contentNode) {
     const content = backdrop.querySelector('.content');
     content.innerHTML = '';
     if (contentNode) content.appendChild(contentNode);
-    lastFocused = document.activeElement;
     backdrop.classList.add('open');
-    document.querySelector('#modal-close')?.focus();
 }
 
 function closeModal() {
     const backdrop = document.querySelector('#modal-backdrop');
     if (!backdrop) return;
     backdrop.classList.remove('open');
-    if (lastFocused) lastFocused.focus();
 }
-
-on('click', '#modal-close', closeModal);
-on('click', '#modal-backdrop', (e, el) => { if (e.target === el) closeModal(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
 function initGallery() {
     if (!isOnPage('gastronomia')) return;
@@ -150,13 +143,19 @@ function initCarousel() {
     const prev = document.querySelector('.carousel .prev');
     const next = document.querySelector('.carousel .next');
     const dots = Array.from(document.querySelectorAll('.carousel-indicators button'));
+
     if (!track || !slides.length) return;
     let index = 0;
+
     function update() {
         track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
     }
-    function go(dir) { index = (index + dir + slides.length) % slides.length; update(); }
+
+    function go(dir) { 
+        index = (index + dir + slides.length) % slides.length; update(); 
+    }
+
     prev?.addEventListener('click', () => go(-1));
     next?.addEventListener('click', () => go(1));
     let timer = setInterval(() => go(1), 5000);
@@ -166,7 +165,10 @@ function initCarousel() {
     update();
 }
 
-function textMatch(text, query) { return text.toLowerCase().includes(query.toLowerCase()); }
+function textMatch(text, query) 
+{ return text.toLowerCase().includes(query.toLowerCase()); 
+
+}
 
 function initLocales() {
     if (!isOnPage('locales')) return;
@@ -174,6 +176,7 @@ function initLocales() {
     const category = document.querySelector('#filter-categoria');
     const results = document.querySelector('#lista-locales');
     const empty = document.querySelector('#locales-empty');
+
     if (!results) return;
     const cards = Array.from(document.querySelectorAll('.card[data-nombre]'));
     const apply = () => {
@@ -390,7 +393,6 @@ function initChatbot() {
         input.focus();
     });
 
-    // Initial greeting
     showMenu();
 }
 
@@ -412,5 +414,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initNewsletter();
 
     document.querySelector('#theme-toggle')?.addEventListener('click', toggleTheme);
+
+    on('click', '#modal-close', closeModal);
+    on('click', '#modal-backdrop', (e, el) => { if (e.target === el) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
 });
 

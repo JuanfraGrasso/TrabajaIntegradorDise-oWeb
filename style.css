@@ -17,8 +17,6 @@ body {
 
 body {
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
@@ -292,7 +290,7 @@ p {
 .reveal {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity .4s ease, transform .4s ease;
+    transition: opacity .4s ease, transform 0.4s ease;
 }
 
 .reveal.visible {
@@ -795,7 +793,7 @@ textarea:focus {
 
 .map-label {
     position: absolute;
-    transform: translate(-50%, -140%);
+    transform: translate(-50%, -180%);
     background: rgba(0,0,0,.6);
     color: #fff;
     padding: .25rem .5rem;
