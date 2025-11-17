@@ -158,9 +158,6 @@ function initCarousel() {
 
     prev?.addEventListener('click', () => go(-1));
     next?.addEventListener('click', () => go(1));
-    let timer = setInterval(() => go(1), 5000);
-    document.querySelector('.carousel')?.addEventListener('mouseenter', () => clearInterval(timer));
-    document.querySelector('.carousel')?.addEventListener('mouseleave', () => timer = setInterval(() => go(1), 5000));
     dots.forEach((btn, i) => btn.addEventListener('click', () => { index = i; update(); }));
     update();
 }
