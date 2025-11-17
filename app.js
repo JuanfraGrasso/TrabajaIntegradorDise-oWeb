@@ -179,7 +179,7 @@ function initLocales() {
 
     if (!results) return;
     const cards = Array.from(document.querySelectorAll('.card[data-nombre]'));
-    const apply = () => {
+    function apply() {
         const q = search?.value.trim() || '';
         const cat = category?.value || '';
         let visible = 0;
@@ -228,15 +228,15 @@ function initOfertas() {
         const q = search?.value.trim() || '';
         const minV = Number(min?.value || 0);
         const maxV = Number(max?.value || 999999);
-        let filtered = cards.filter(c => {
-            const precio = Number(c.dataset.precio || 0);
-            const nombre = c.dataset.nombre || '';
-            return (!q || textMatch(nombre, q)) && precio >= minV && precio <= maxV;
+        let visible = 0;
+        cards.forEach(card => {
+            const precio = Number(card.dataset.precio) || '';
+            const nombre = card.dataset.nombre || '';
+            const ok = (!q || textMatch(nombre, q)) && precio >= minV && precio <= maxV;;
+            card.style.display = ok ? '' : 'none';
+            if (ok) visible++;
         });
-
-        cards.forEach(c => c.style.display = 'none');
-        filtered.forEach(c => c.style.display = 'grid');
-        if (empty) empty.hidden = filtered.length !== 0;
+        if (empty) empty.hidden = visible !== 0;
     }
     [search, min, max].forEach(el => el?.addEventListener(el?.tagName === 'SELECT' ? 'change' : 'input', apply));
     apply();
@@ -246,21 +246,7 @@ function initContacto() {
     if (!isOnPage('contacto')) return;
     const form = document.querySelector('#contacto-form');
     if (!form) return;
-    const key = 'contacto-draft-v1';
-
-    const draft = storage.get(key, {});
-    Object.entries(draft).forEach(([name, val]) => {
-        const el = form.elements.namedItem(name);
-        if (el && 'value' in el) el.value = val;
-        if (el && el.type === 'checkbox') el.checked = Boolean(val);
-    });
-
-    form.addEventListener('input', () => {
-        const data = Object.fromEntries(new FormData(form).entries());
-        data['acepto'] = form.elements['acepto']?.checked || false;
-        storage.set(key, data);
-    });
-
+    
     function showError(input, msg) {
         input.classList.add('is-invalid');
         let box = input.closest('.field')?.querySelector('.error-msg');
@@ -294,7 +280,6 @@ function initContacto() {
         if (!acepto.checked) { showError(acepto, 'Debés aceptar los términos.'); ok = false; }
 
         if (!ok) return;
-        storage.del(key);
         form.reset();
         const node = document.createElement('div');
         node.innerHTML = '<p>¡Gracias por contactarte! Te responderemos a la brevedad.</p>';
@@ -311,6 +296,7 @@ function initNewsletter() {
             form.querySelector('.error-msg')?.replaceChildren(document.createTextNode('Email inválido.'));
             return;
         }
+        
         form.reset();
         const node = document.createElement('div');
         node.innerHTML = '<p>Suscripción realizada con éxito.</p>';
